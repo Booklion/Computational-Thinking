@@ -30,19 +30,28 @@ class DogRepository(Dog):
         '''
             Remove a Dog from the repository by ID
         '''
-        for elem in self.__repo:
-            if elem.getID() == ID:
-                self.__repo.remove(elem)
-        print("Dog removed successfully!")
         if len(self.__repo) == 0:
             print("The dog repository is empty!")
+        else:
+            foundID = 0
+            for elem in self.__repo:
+                if elem.getID() == ID:
+                    foundID = 1
+                    self.__repo.remove(elem)
+                    print("Dog removed successfully!")
+            
+            if foundID == 0:
+                print("No dog with this ID found!")
+                    
     
     def updateDog(self, ID):
         '''
             Update the information about a Dog identified by its ID.
         '''
+        foundID = 0
         for elem in self.__repo:
             if elem.getID() == ID:
+                foundID = 1
                 print("What information would you like to update? Select: \n")
                 print("1 - name \n")
                 print("2 - age \n")
@@ -88,8 +97,11 @@ class DogRepository(Dog):
                         print("The option is invalid!")
                         break
                 if option == 0:
-                    print("Thank you for your update!")  
-        
+                    print("Thank you for your update!") 
+                     
+        if foundID == 0:
+            print("No dog with this ID found!")
+                
     def showAll(self):
         if len(self.__repo) == 0:
             print("The dog repository is empty!")
@@ -98,14 +110,64 @@ class DogRepository(Dog):
                 print(elem.__str__() + "\n")
                     
     def filterByAdoptionStatus(self):
-        # TO-DO
-        pass
+        """
+            Filter the cats in the repository of cats by their adoption status.
+        """
+        print("What adoption status should the dog have? Select one:\n")
+        print("1 - adopted \n")
+        print("2 - not adopted \n")
+        option = int(input("Your option: \n"))
+        
+        if option == 1:
+            for elem in self.__repo:
+                if elem.getAdoptionStatus() == True:
+                    print(elem)
+        elif option == 2:
+            filteredList = list(filter(lambda x: x.getAdoptionStatus() == False, self.__repo))
+            if len(filteredList) == 0:
+                print("There are no unadopted dogs!")
+            else:
+                [print(elem) for elem in filteredList]
+                    
+        else:
+            print("This input is invalid!")
     
-    def sortByAge(self, criteria: bool):
-        # TO-DO
-        pass
+    def sortByAge(self, criterion: bool):
+        """
+            Sort the repository by the ages of the dogs, by a certain criterion (ascending - True, descending - False)
+        """
+        if criterion == True:
+            sortedRepo = sorted(self.__repo, key=lambda x: x.getAge())
+            for elem in sortedRepo:
+                print(elem)
+        else:
+            sortedRepo = sorted(self.__repo, key=lambda x: x.getAge(), reverse = True)
+            for elem in sortedRepo:
+                print(elem)
     
-    def sortByTimeInShelter(self, criteria: bool):
-        # TO-DO
-        pass
+    def sortByTimeInShelter(self, criterion: bool):
+        """
+            Sort the repository by the time the dogs spent in shelter, by a certain criterion (ascending - True, descending - False)
+        """
+        if criterion == True:
+            sortedRepo = sorted(self.__repo, key=lambda x: x.getTimeInShelter())
+            for elem in sortedRepo:
+                print(elem)
+        else:
+            sortedRepo = sorted(self.__repo, key=lambda x: x.getTimeInShelter(), reverse = True)
+            for elem in sortedRepo:
+                print(elem)
+                
+    def sortByID(self, criterion: bool):
+        """
+            Sort by the dog's ID in ascending order (criterion = True) or descending order (criterion = False)
+        """
+        if criterion == True:
+            sortedRepo = sorted(self.__repo, key=lambda x: x.getID())
+            for elem in sortedRepo:
+                print(elem)
+        else:
+            sortedRepo = sorted(self.__repo, key=lambda x: x.getID(), reverse = True)
+            for elem in sortedRepo:
+                print(elem)
             
