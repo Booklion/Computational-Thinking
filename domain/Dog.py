@@ -12,13 +12,14 @@ class Dog(Animal):
         dogFood (str): the preferred food of the dog
     '''
 
-    def __init__(self, ID: int, name: str, age: int, timeInShelter: int, adopted: bool, race: str, dogFood: str):
+    def __init__(self, ID: int, name: str, age: int, timeInShelter: int, adopted: bool, race: str, dogFood: str, photo: str):
         '''
         Constructor
         '''
         super().__init__(ID, name, age, timeInShelter, adopted)
         self.__race = race
         self.__dogFood = dogFood
+        self.__photo = photo
 
     def getRace(self):
         return self.__race
