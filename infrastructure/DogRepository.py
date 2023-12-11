@@ -111,7 +111,7 @@ class DogRepository(Dog):
                     
     def filterByAdoptionStatus(self):
         """
-            Filter the cats in the repository of cats by their adoption status.
+            Filter the dogs in the repository of dogs by their adoption status.
         """
         print("What adoption status should the dog have? Select one:\n")
         print("1 - adopted \n")
