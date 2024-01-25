@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "7599568e-1bb8-4f21-947c-4b5f6e2409c1",
+		"name": "ComputationalThinking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23767608"
+	},
+	"item": [
+		{
+			"name": "get_cats",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/cats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"cats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add_cat",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Gato\",\r\n    \"birth_year\": 2020,\r\n    \"joined_shelter_ts\": 123,\r\n    \"adopted\": \"False\",\r\n    \"description\": \"description\",\r\n    \"image\": \"image\",\r\n    \"special_needs\": [\r\n        \"no\"\r\n    ],\r\n    \"gender\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/cats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"cats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_cat",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Gato\",\r\n    \"birth_year\": 2020,\r\n    \"joined_shelter_ts\": 123,\r\n    \"adopted\": \"False\",\r\n    \"description\": \"description\",\r\n    \"image\": \"image\",\r\n    \"special_needs\": [\r\n        \"no\"\r\n    ],\r\n    \"gender\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/cats/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"cats",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove_cat",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Gato\",\r\n    \"birth_year\": 2020,\r\n    \"joined_shelter_ts\": 123,\r\n    \"adopted\": \"False\",\r\n    \"description\": \"description\",\r\n    \"image\": \"image\",\r\n    \"special_needs\": [\r\n        \"no\"\r\n    ],\r\n    \"gender\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/cats/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"cats",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
