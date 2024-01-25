@@ -16,7 +16,8 @@ class DogRepository(Dog):
         '''
         self.__repo = []
     
-        
+    
+
     # Operation for Dogs:
     
     def addDog(self, newDog: Dog):

@@ -1,89 +1,130 @@
-class Animal():
+from domain.Gender import Gender
+
+class Animal(object):
     """
         An element of the class Animal has the following attributes:
         - name: the name of the animal
-        - age: the age of the animal
-        - timeInShelter: how much time the animal spent in the shelter (until present)
+        - birth_year: the birth year of the animal
+        - joined_shelter_ts: UNIX timestamp representation of the datetime when the animal joined the shelter
         - adopted: the adoption status of the animal
     """
-    def __init__(self, ID: int, name: str, age: int, timeInShelter: int, adopted: bool):
+    def __init__(self,
+            id: int,
+            name: str,
+            birth_year: int,
+            joined_shelter_ts: int,
+            adopted: bool,
+            description: str,
+            image: str,
+            special_needs: [str],
+            gender: Gender):
         """
             Constructor
         """
-        self.__id = ID 
-        self.__name = name
-        self.__age = age
-        self.__timeInShelter = timeInShelter
-        self.__adopted = adopted
-        
-    #Getters and setters
-    
-    def getID(self):
-        """
-            Getter for the ID.
-        """
-        return self.__id
+        self._id = id 
+        self.name = name
+        self.birth_year = birth_year
+        self.joined_shelter_ts = joined_shelter_ts
+        self.adopted = adopted
+        self.description = description
+        self.image = image
+        self.special_needs = special_needs
+        self.gender = gender
 
-    def setID(self, newID):
-        """
-            Setter for the ID.
-            param newID: int, the new ID of the animal
-        """
-        self.__id = newID
+    @property
+    def id(self):
+        return self._id
     
-    def getName(self):
-        """
-            Getter for the name.
-        """
-        return self.__name
+    @id.setter
+    def id(self, value):
+        self._id = value
     
-    def setName(self, newName):
-        """
-            Setter for the name.
-            param newName: string, the new name of the animal
-        """
-        self.__name = newName
-        
-    def getAge(self):
-        """
-            Getter for the age.
-        """
-        return self.__age
+    @property
+    def name(self):
+        return self._name
     
-    def setAge(self, newAge):
-        """
-            Setter for the age.
-            param newAge: integer, the new age of the animal
-        """
-        self.__age = newAge
-        
-    def getTimeInShelter(self):
-        """
-            Getter for the time the animal spent in shelter up until the present.
-        """
-        return self.__timeInShelter
+    @name.setter
+    def name(self, value):
+        self._name = value
+
+    @property
+    def birth_year(self):
+        return self._birth_year
     
-    def setTimeInShelter(self, newTime):
-        """
-            Setter for the time the animal spent in shelter up until the present.
-            param newTime: integer, the updated time spent in the shelter for the animal
-        """
-        self.__timeInShelter = newTime
+    @birth_year.setter
+    def birth_year(self, value):
+        self._birth_year = value
+
+    @property
+    def joined_shelter_ts(self):
+        return self._joined_shelter_ts
     
-    def getAdoptionStatus(self):
-        """
-            Getter for the adoption status of the animal.
-        """
-        return self.__adopted
+    @joined_shelter_ts.setter
+    def joined_shelter_ts(self, value):
+        self._joined_shelter_ts = value
+
+    @property
+    def adopted(self):
+        return self._adopted
     
-    def setAdoptionStatus(self, newStatus):
-        """
-            Setter for the adoption status of the animal.
-            param newStatus: bool, the new adoption status of the animal
-        """
-        self.__adopted = newStatus
-        
-    def __str__(self):
-        return "ID: " + str(self.__id) + "\n" + "Name: " + self.__name + "\n" + "Age: " + str(self.__age) + "\n" + "Time in shelter: " + str(self.__timeInShelter) + " month(s)" + "\n" + "Adopted: " + str(self.__adopted)
-        
-        
+    @adopted.setter
+    def adopted(self, value):
+        self._adopted = value
+
+    @property
+    def description(self):
+        return self._description
+    
+    @description.setter
+    def description(self, value):
+        self._description = value
+    
+    @property
+    def image(self):
+        return self._image
+    
+    @image.setter
+    def image(self, value):
+        self._image = value
+
+    @property
+    def special_needs(self):
+        return self._special_needs
+    
+    @special_needs.setter
+    def special_needs(self, value):
+        self._special_needs = value
+    
+    @property
+    def gender(self):
+        return self._gender
+    
+    @gender.setter
+    def gender(self, value):
+        self._gender = value
+    
+    def to_json(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "birth_year": self.birth_year,
+            "joined_shelter_ts": self.joined_shelter_ts,
+            "adopted": self.adopted,
+            "description": self.description,
+            "image": self.image,
+            "special_needs": self.special_needs,
+            "gender": self.gender
+        }
+    
+    def from_json(json):
+        return Animal(
+            json['id'],
+            json['name'],
+            json['birth_year'],
+            json['joined_shelter_ts'],
+            json['adopted'],
+            json['description'],
+            json['image'],
+            json['special_needs'],
+            json['gender']
+        )

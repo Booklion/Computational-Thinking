@@ -4,10 +4,8 @@ Created on 11 Dec 2023
 @author: Big Lion
 '''
 from domain import Person
-from domain import Cat
-from domain import Dog
 
-class Person(Person):
+class PersonRepository(Person):
     '''
     classdocs
     '''
@@ -51,34 +49,9 @@ class Person(Person):
         for elem in self.__repo:
             if elem.getID() == ID:
                 foundID = 1
-                print("What information would you like to update? Select: \n")
-                print("1 - name \n")
-                print("2 - surname \n")
-                print("3 - status \n")
-                print("0 - exit \n")
-                
-                option = int(input("Your option: "))
-                while option != 0:
-                    if option == 1:
-                        newName = str(input("Enter new name: "))
-                        elem.setName(newName)
-                        option = int(input("Your option: "))
-                        
-                    elif option == 2:
-                        newSurname = int(input("Enter the new surname: "))
-                        elem.setSurnme(newSurname)
-                        option = int(input("Your option: ")) 
-                    
-                    elif option == 3:
-                        newStatus = bool(input("Enter the new status: "))
-                        elem.setIsAdmin(newStatus)
-                        option = int(input("Your option: "))
-                        
-                    else:
-                        print("The option is invalid!")
-                        break
-                if option == 0:
-                    print("Thank you for your update!") 
+                elem.setName(newName)
+                elem.setSurnme(newSurname)
+                elem.setIsAdmin(newStatus)
                      
         if foundID == 0:
             print("No Person with this ID found!")
