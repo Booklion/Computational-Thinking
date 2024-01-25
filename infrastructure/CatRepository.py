@@ -4,15 +4,7 @@ Created on 13 Nov 2023
 @author: Big Lion
 '''
 from domain.Animal import Animal
-
-class SingletonMeta(type):
-    _instances = {}
-
-    def __call__(cls, *args, **kwargs):
-        if cls not in cls._instances:
-            instance = super().__call__(*args, **kwargs)
-            cls._instances[cls] = instance
-        return cls._instances[cls]
+from infrastructure.SingletonMeta import SingletonMeta
 
 class CatRepository(metaclass=SingletonMeta):
     '''
@@ -20,7 +12,6 @@ class CatRepository(metaclass=SingletonMeta):
     '''
     _repo = []
 
-    # Operation for cats:
     def add(self, new_cat: Animal):
         '''
             Add a cat to the repository

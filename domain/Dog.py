@@ -25,3 +25,31 @@ class Dog(Animal):
     @size.setter
     def size(self, value):
         self._size = value
+
+    def to_json(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "birth_year": self.birth_year,
+            "joined_shelter_ts": self.joined_shelter_ts,
+            "adopted": self.adopted,
+            "description": self.description,
+            "image": self.image,
+            "special_needs": self.special_needs,
+            "gender": self.gender,
+            "size": self.size
+        }
+    
+    def from_json(json):
+        return Dog(
+            json['id'],
+            json['name'],
+            json['birth_year'],
+            json['joined_shelter_ts'],
+            json['adopted'],
+            json['description'],
+            json['image'],
+            json['special_needs'],
+            json['gender'],
+            json['size']
+        )

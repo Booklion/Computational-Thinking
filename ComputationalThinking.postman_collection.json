@@ -26,6 +26,37 @@
 			"response": []
 		},
 		{
+			"name": "get_dogs",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/dogs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"dogs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "add_cat",
 			"request": {
 				"method": "POST",
@@ -48,6 +79,34 @@
 					"port": "5000",
 					"path": [
 						"cats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add_dog",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Gato\",\r\n    \"birth_year\": 2020,\r\n    \"joined_shelter_ts\": 123,\r\n    \"adopted\": \"False\",\r\n    \"description\": \"description\",\r\n    \"image\": \"image\",\r\n    \"special_needs\": [\r\n        \"no\"\r\n    ],\r\n    \"gender\": 1,\r\n    \"size\": 20\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/dogs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"dogs"
 					]
 				}
 			},
@@ -83,6 +142,35 @@
 			"response": []
 		},
 		{
+			"name": "update_dog",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Gato\",\r\n    \"birth_year\": 2020,\r\n    \"joined_shelter_ts\": 123,\r\n    \"adopted\": \"False\",\r\n    \"description\": \"description\",\r\n    \"image\": \"image\",\r\n    \"special_needs\": [\r\n        \"no\"\r\n    ],\r\n    \"gender\": 2,\r\n    \"size\": 20\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/dogs/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"dogs",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "remove_cat",
 			"request": {
 				"method": "DELETE",
@@ -105,6 +193,35 @@
 					"port": "5000",
 					"path": [
 						"cats",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove_dog",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Gato\",\r\n    \"birth_year\": 2020,\r\n    \"joined_shelter_ts\": 123,\r\n    \"adopted\": \"False\",\r\n    \"description\": \"description\",\r\n    \"image\": \"image\",\r\n    \"special_needs\": [\r\n        \"no\"\r\n    ],\r\n    \"gender\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/dogs/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"dogs",
 						"1"
 					]
 				}
