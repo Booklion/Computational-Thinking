@@ -127,7 +127,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/dogs?special_needs=fiv&gender=2",
+					"raw": "http://localhost:5000/dogs?special_needs=fiv&gender=2&max_size=30",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -144,6 +144,10 @@
 						{
 							"key": "gender",
 							"value": "2"
+						},
+						{
+							"key": "max_size",
+							"value": "30"
 						}
 					]
 				}

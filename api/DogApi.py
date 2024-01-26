@@ -10,7 +10,9 @@ def get_dogs():
     dog_repo = DogRepository()
     filters = {
         "gender": request.args.get('gender'),
-        "special_needs": request.args.getlist('special_needs')
+        "special_needs": request.args.getlist('special_needs'),
+        "min_size": request.args.get('min_size'),
+        "max_size": request.args.get('max_size')
     }
 
     return jsonify([dog.to_json() for dog in dog_repo.get(filters)])

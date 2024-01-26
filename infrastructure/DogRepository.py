@@ -20,9 +20,13 @@ class DogRepository(metaclass=SingletonMeta):
     def get(self, filters = {}):
         filtered_repo = self._repo
         if not filters['gender'] is None:
-            filtered_repo = [cat for cat in filtered_repo if cat.gender == int(filters['gender'])]
+            filtered_repo = [dog for dog in filtered_repo if dog.gender == int(filters['gender'])]
         if len(filters['special_needs']) > 0:
-            filtered_repo = [cat for cat in filtered_repo if len(set(cat.special_needs).intersection(filters['special_needs'])) > 0]
+            filtered_repo = [dog for dog in filtered_repo if len(set(dog.special_needs).intersection(filters['special_needs'])) > 0]
+        if not filters['min_size'] is None:
+            filtered_repo = [dog for dog in filtered_repo if dog.size >= int(filters['min_size'])]
+        if not filters['max_size'] is None:
+            filtered_repo = [dog for dog in filtered_repo if dog.size <= int(filters['max_size'])]
 
         return filtered_repo
     

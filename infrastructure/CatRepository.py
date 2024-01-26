@@ -22,7 +22,7 @@ class CatRepository(metaclass=SingletonMeta):
 
         return new_cat
     
-    def get(self, filters = {}):
+    def get(self, filters = {}, sort_criteria = {}):
         filtered_repo = self._repo
         if not filters['gender'] is None:
             filtered_repo = [cat for cat in filtered_repo if cat.gender == int(filters['gender'])]
