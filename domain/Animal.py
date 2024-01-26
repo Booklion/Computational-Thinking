@@ -1,15 +1,9 @@
+from uuid import uuid4
+
 from domain.Gender import Gender
 
 class Animal(object):
-    """
-        An element of the class Animal has the following attributes:
-        - name: the name of the animal
-        - birth_year: the birth year of the animal
-        - joined_shelter_ts: UNIX timestamp representation of the datetime when the animal joined the shelter
-        - adopted: the adoption status of the animal
-    """
     def __init__(self,
-            id: int,
             name: str,
             birth_year: int,
             joined_shelter_ts: int,
@@ -17,11 +11,12 @@ class Animal(object):
             description: str,
             image: str,
             special_needs: [str],
-            gender: Gender):
+            gender: Gender,
+            id: str = uuid4()):
         """
             Constructor
         """
-        self._id = id 
+        self._id = str(id)
         self.name = name
         self.birth_year = birth_year
         self.joined_shelter_ts = joined_shelter_ts
@@ -118,7 +113,6 @@ class Animal(object):
     
     def from_json(json):
         return Animal(
-            json['id'],
             json['name'],
             json['birth_year'],
             json['joined_shelter_ts'],

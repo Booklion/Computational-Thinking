@@ -1,12 +1,13 @@
 from flask import Blueprint, request, jsonify
+from uuid import uuid4
 
 from infrastructure.CatRepository import CatRepository
-from domain.Animal import Animal
+from domain.Cat import Cat
 
 cat_api = Blueprint('cats', __name__)
 
 @cat_api.route('/cats', methods=['GET'])
-def getCats():
+def get_cats():
     cat_repo = CatRepository()
     filters = {
         "gender": request.args.get('gender'),
@@ -20,23 +21,23 @@ def getCats():
     return jsonify([cat.to_json() for cat in cat_repo.get(filters, sort_criteria)])
 
 @cat_api.route('/cats', methods=['POST'])
-def addCat():
+def add_cat():
     cat_repo = CatRepository()
-    new_cat = Animal.from_json(request.get_json())
+    new_cat = Cat.from_json(request.get_json())
     return jsonify(cat_repo.add(new_cat).to_json())
 
 @cat_api.route('/cats/<id>', methods=['GET'])
 def get_cat_by_id(id):
     cat_repo = CatRepository()
-    return jsonify(cat_repo.get_by_id(int(id)).to_json())
+    return jsonify(cat_repo.get_by_id(str(id)).to_json())
 
 @cat_api.route('/cats/<id>', methods=['PUT'])
 def update_cat(id):
     cat_repo = CatRepository()
-    updated_cat = Animal.from_json(request.get_json())
-    return jsonify(cat_repo.update(int(id), updated_cat).to_json())
+    updated_cat = Cat.from_json(request.get_json())
+    return jsonify(cat_repo.update(str(id), updated_cat).to_json())
 
 @cat_api.route('/cats/<id>', methods=['DELETE'])
 def delete_cat(id):
     cat_repo = CatRepository()
-    return jsonify(cat_repo.remove(int(id)).to_json())
+    return jsonify(cat_repo.remove(str(id)).to_json())

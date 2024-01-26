@@ -33,7 +33,7 @@ class DogRepository(metaclass=SingletonMeta):
         return filtered_repo
     
     def get_by_id(self, id: int):
-        return next(dog for dog in self._repo if dog.id == id)
+        return next(dog for dog in self._repo if dog.id == str(id))
     
     def update(self, id: int, updated_dog):
         self.remove(id)

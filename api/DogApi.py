@@ -30,15 +30,15 @@ def add_dog():
 @dog_api.route('/dogs/<id>', methods=['GET'])
 def get_dog_by_id(id):
     dog_repo = DogRepository()
-    return jsonify(dog_repo.get_by_id(int(id)).to_json())
+    return jsonify(dog_repo.get_by_id(str(id)).to_json())
 
 @dog_api.route('/dogs/<id>', methods=['PUT'])
 def update_dog(id):
     dog_repo = DogRepository()
     updated_dog = Dog.from_json(request.get_json())
-    return jsonify(dog_repo.update(int(id), updated_dog).to_json())
+    return jsonify(dog_repo.update(str(id), updated_dog).to_json())
 
 @dog_api.route('/dogs/<id>', methods=['DELETE'])
 def delete_dog(id):
     dog_repo = DogRepository()
-    return jsonify(dog_repo.remove(int(id)).to_json())
+    return jsonify(dog_repo.remove(str(id)).to_json())

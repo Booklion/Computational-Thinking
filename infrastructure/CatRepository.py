@@ -33,16 +33,16 @@ class CatRepository(metaclass=SingletonMeta):
 
         return filtered_repo
     
-    def get_by_id(self, id: int):
-        return next(cat for cat in self._repo if cat.id == id)
+    def get_by_id(self, id: str):
+        return next(cat for cat in self._repo if cat.id == str(id))
     
-    def update(self, id: int, updated_cat):
+    def update(self, id: str, updated_cat):
         self.remove(id)
         updated_cat.id = id
         self.add(updated_cat)
         return updated_cat
 
-    def remove(self, id: int):
+    def remove(self, id: str):
         removed_cat = self.get_by_id(id)
         self._repo = [cat for cat in self._repo if cat.id != id]
         return removed_cat

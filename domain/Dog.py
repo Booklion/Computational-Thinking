@@ -1,10 +1,11 @@
+from uuid import uuid4
+
 from domain.Animal import Animal
 from domain.Gender import Gender
 
 class Dog(Animal):
     def __init__(
         self,
-        id: int,
         name: str,
         birth_year: int,
         joined_shelter_ts: int,
@@ -13,9 +14,10 @@ class Dog(Animal):
         image: str,
         special_needs: [str],
         gender: Gender,
-        size: int
+        size: int,
+        id: str = uuid4(),
     ):
-        super().__init__(id, name, birth_year, joined_shelter_ts, adopted, description, image, special_needs, gender)
+        super().__init__(name, birth_year, joined_shelter_ts, adopted, description, image, special_needs, gender, id)
         self.size = size
 
     @property
@@ -42,7 +44,6 @@ class Dog(Animal):
     
     def from_json(json):
         return Dog(
-            json['id'],
             json['name'],
             json['birth_year'],
             json['joined_shelter_ts'],
