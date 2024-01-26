@@ -15,7 +15,11 @@ def get_dogs():
         "max_size": request.args.get('max_size')
     }
 
-    return jsonify([dog.to_json() for dog in dog_repo.get(filters)])
+    sort_criteria = {
+        "birth_year": request.args.get('birth_year')
+    }
+
+    return jsonify([dog.to_json() for dog in dog_repo.get(filters, sort_criteria)])
 
 @dog_api.route('/dogs', methods=['POST'])
 def add_dog():

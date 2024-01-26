@@ -28,6 +28,8 @@ class CatRepository(metaclass=SingletonMeta):
             filtered_repo = [cat for cat in filtered_repo if cat.gender == int(filters['gender'])]
         if len(filters['special_needs']) > 0:
             filtered_repo = [cat for cat in filtered_repo if len(set(cat.special_needs).intersection(filters['special_needs'])) > 0]
+        if sort_criteria['birth_year'] in ['ASC', 'DESC']:
+            filtered_repo.sort(key=lambda x: x.birth_year, reverse=sort_criteria['birth_year'] == 'DESC')
 
         return filtered_repo
     

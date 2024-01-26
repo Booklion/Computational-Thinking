@@ -79,6 +79,53 @@
 			"response": []
 		},
 		{
+			"name": "get_cats_sorted",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/cats?birth_year=ASC",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"cats"
+					],
+					"query": [
+						{
+							"key": "special_needs",
+							"value": "fiv",
+							"disabled": true
+						},
+						{
+							"key": "gender",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "birth_year",
+							"value": "ASC"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "get_dogs",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -155,13 +202,65 @@
 			"response": []
 		},
 		{
+			"name": "get_dogs_sorted",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/dogs?birth_year=DESC",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"dogs"
+					],
+					"query": [
+						{
+							"key": "special_needs",
+							"value": "fiv",
+							"disabled": true
+						},
+						{
+							"key": "gender",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "max_size",
+							"value": "30",
+							"disabled": true
+						},
+						{
+							"key": "birth_year",
+							"value": "DESC"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "add_cat",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Gato\",\r\n    \"birth_year\": 2020,\r\n    \"joined_shelter_ts\": 123,\r\n    \"adopted\": \"False\",\r\n    \"description\": \"description\",\r\n    \"image\": \"image\",\r\n    \"special_needs\": [\r\n        \"fiv\"\r\n    ],\r\n    \"gender\": 1\r\n}",
+					"raw": "{\r\n    \"id\": 2,\r\n    \"name\": \"Gato\",\r\n    \"birth_year\": 2020,\r\n    \"joined_shelter_ts\": 123,\r\n    \"adopted\": \"False\",\r\n    \"description\": \"description\",\r\n    \"image\": \"image\",\r\n    \"special_needs\": [\r\n        \"fiv\"\r\n    ],\r\n    \"gender\": 1\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -189,7 +288,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Gato\",\r\n    \"birth_year\": 2020,\r\n    \"joined_shelter_ts\": 123,\r\n    \"adopted\": \"False\",\r\n    \"description\": \"description\",\r\n    \"image\": \"image\",\r\n    \"special_needs\": [\r\n        \"no\"\r\n    ],\r\n    \"gender\": 1,\r\n    \"size\": 20\r\n}",
+					"raw": "{\r\n    \"id\": 2,\r\n    \"name\": \"Gato\",\r\n    \"birth_year\": 2024,\r\n    \"joined_shelter_ts\": 123,\r\n    \"adopted\": \"False\",\r\n    \"description\": \"description\",\r\n    \"image\": \"image\",\r\n    \"special_needs\": [\r\n        \"no\"\r\n    ],\r\n    \"gender\": 1,\r\n    \"size\": 20\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

@@ -13,7 +13,11 @@ def getCats():
         "special_needs": request.args.getlist('special_needs')
     }
 
-    return jsonify([cat.to_json() for cat in cat_repo.get(filters)])
+    sort_criteria = {
+        "birth_year": request.args.get('birth_year')
+    }
+
+    return jsonify([cat.to_json() for cat in cat_repo.get(filters, sort_criteria)])
 
 @cat_api.route('/cats', methods=['POST'])
 def addCat():

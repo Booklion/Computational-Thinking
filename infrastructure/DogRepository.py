@@ -17,7 +17,7 @@ class DogRepository(metaclass=SingletonMeta):
 
         return new_dog
     
-    def get(self, filters = {}):
+    def get(self, filters = {}, sort_criteria = {}):
         filtered_repo = self._repo
         if not filters['gender'] is None:
             filtered_repo = [dog for dog in filtered_repo if dog.gender == int(filters['gender'])]
@@ -27,6 +27,8 @@ class DogRepository(metaclass=SingletonMeta):
             filtered_repo = [dog for dog in filtered_repo if dog.size >= int(filters['min_size'])]
         if not filters['max_size'] is None:
             filtered_repo = [dog for dog in filtered_repo if dog.size <= int(filters['max_size'])]
+        if sort_criteria['birth_year'] in ['ASC', 'DESC']:
+            filtered_repo.sort(key=lambda x: x.birth_year, reverse=sort_criteria['birth_year'] == 'DESC')
 
         return filtered_repo
     
