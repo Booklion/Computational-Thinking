@@ -1,4 +1,5 @@
 from flask import Blueprint, request, jsonify
+
 from infrastructure.DogRepository import DogRepository
 from domain.Dog import Dog
 
@@ -7,7 +8,12 @@ dog_api = Blueprint('dogs', __name__)
 @dog_api.route('/dogs', methods=['GET'])
 def get_dogs():
     dog_repo = DogRepository()
-    return jsonify([dog.to_json() for dog in dog_repo.get()])
+    filters = {
+        "gender": request.args.get('gender'),
+        "special_needs": request.args.getlist('special_needs')
+    }
+
+    return jsonify([dog.to_json() for dog in dog_repo.get(filters)])
 
 @dog_api.route('/dogs', methods=['POST'])
 def add_dog():

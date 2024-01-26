@@ -1,4 +1,5 @@
 from flask import Blueprint, request, jsonify
+
 from infrastructure.CatRepository import CatRepository
 from domain.Animal import Animal
 
@@ -7,7 +8,12 @@ cat_api = Blueprint('cats', __name__)
 @cat_api.route('/cats', methods=['GET'])
 def getCats():
     cat_repo = CatRepository()
-    return jsonify([cat.to_json() for cat in cat_repo.get()])
+    filters = {
+        "gender": request.args.get('gender'),
+        "special_needs": request.args.getlist('special_needs')
+    }
+
+    return jsonify([cat.to_json() for cat in cat_repo.get(filters)])
 
 @cat_api.route('/cats', methods=['POST'])
 def addCat():

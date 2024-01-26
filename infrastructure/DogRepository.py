@@ -17,8 +17,14 @@ class DogRepository(metaclass=SingletonMeta):
 
         return new_dog
     
-    def get(self, filters = []):
-        return self._repo
+    def get(self, filters = {}):
+        filtered_repo = self._repo
+        if not filters['gender'] is None:
+            filtered_repo = [cat for cat in filtered_repo if cat.gender == int(filters['gender'])]
+        if len(filters['special_needs']) > 0:
+            filtered_repo = [cat for cat in filtered_repo if len(set(cat.special_needs).intersection(filters['special_needs'])) > 0]
+
+        return filtered_repo
     
     def get_by_id(self, id: int):
         return next(dog for dog in self._repo if dog.id == id)

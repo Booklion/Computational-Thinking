@@ -5,6 +5,7 @@ Created on 13 Nov 2023
 '''
 from domain.Animal import Animal
 from infrastructure.SingletonMeta import SingletonMeta
+from domain.Gender import Gender
 
 class CatRepository(metaclass=SingletonMeta):
     '''
@@ -21,8 +22,14 @@ class CatRepository(metaclass=SingletonMeta):
 
         return new_cat
     
-    def get(self, filters = []):
-        return self._repo
+    def get(self, filters = {}):
+        filtered_repo = self._repo
+        if not filters['gender'] is None:
+            filtered_repo = [cat for cat in filtered_repo if cat.gender == int(filters['gender'])]
+        if len(filters['special_needs']) > 0:
+            filtered_repo = [cat for cat in filtered_repo if len(set(cat.special_needs).intersection(filters['special_needs'])) > 0]
+
+        return filtered_repo
     
     def get_by_id(self, id: int):
         return next(cat for cat in self._repo if cat.id == id)
